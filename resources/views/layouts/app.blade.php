@@ -5,11 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+        <!-- Theme -->
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+        <meta name="theme-color" media="(prefers-color-scheme: dark)"  content="#0b0b0b">
+
         <title>{{ config('app.name', '') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="{{ asset('favicon.svg') }}">
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -17,7 +25,7 @@
     <body class="font-sans antialiased bg-gray-100 dark:bg-gray-900">
         <x-toast-container />
 
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen h-full bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
