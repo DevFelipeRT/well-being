@@ -1,11 +1,13 @@
 <x-guest-layout>
-
     @if (Route::has('register'))
-        <a class="w-full text-center underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
-            <span>Don't have an account? </span>{{ __('Create one.') }}
-        </a>
+        <div class="w-full m-2 text-center">
+            <a class="p-2 m-2 text-center underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
+                <span>Don't have an account? </span>{{ __('Create one.') }}
+            </a>
+        </div>
     @endif
-    <div class="w-full sm:max-w-md mt-2 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+
+    <div class="w-full sm:max-w-md px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -40,7 +42,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                @if (Route::has('register'))
+                @if (false)
                     <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
                         {{ __('Forgot your password?') }}
                     </a>
