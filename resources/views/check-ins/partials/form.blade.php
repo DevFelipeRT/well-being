@@ -46,7 +46,7 @@ Parameters:
     $cancelUrl = ($previous && $previous !== $current && $prevHost === $safeHost) ? $previous : $fallback;
 @endphp
 
-<form action="{{ $action }}" method="POST" class="space-y-6">
+<form action="{{ $action }}" method="POST" class="flex flex-col gap-6">
     @csrf
     @if($isEdit) @method('PUT') @endif
 
