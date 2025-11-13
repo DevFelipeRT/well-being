@@ -139,8 +139,13 @@ final class CheckInController extends Controller
             data: $dto
         );
 
+        $detailsHtml = view('check-ins.partials.details-card', [
+            'checkIn' => $updated,
+        ])->render();
+
         return redirect()
-            ->route('check-ins.show', $updated)
+            ->route('dashboard')
+            ->with('recent_details_html', $detailsHtml)
             ->with('success', 'Check-in updated successfully.');
     }
 
