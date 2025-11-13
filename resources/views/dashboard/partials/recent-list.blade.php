@@ -53,6 +53,6 @@
     </div>
 
     <x-modal name="recent-details" :show="false" maxWidth="2xl" position="center">
-        <div class="p-4 sm:p-6" x-html="modalHtml"></div>
+        <div x-html="modalHtml"></div>
     </x-modal>
 </div>
