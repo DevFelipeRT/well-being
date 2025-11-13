@@ -35,10 +35,10 @@ New optional props (defaults preserve current behavior):
 
     $containerBase = 'fixed inset-0 z-50';
     $containerLayout = $position === 'center'
-        ? 'flex items-center justify-center px-4 sm:px-0'
-        : 'overflow-y-auto px-4 py-6 sm:px-0';
+        ? 'flex items-center justify-center px-4'
+        : 'overflow-y-auto px-4 py-6';
 
-    $panelBase = 'bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full ' . $maxWidthClass . ' sm:mx-auto';
+    $panelBase = 'bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-xl transform transition-all w-full ' . $maxWidthClass . ' sm:mx-auto';
     $panelLayout = $position === 'center'
         ? 'max-h-[calc(100vh-3rem)] overflow-auto'
         : 'mb-6';
