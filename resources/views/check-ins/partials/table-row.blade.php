@@ -94,6 +94,7 @@ Inputs:
                     ] : null,
                 ])"
                 trigger-aria-label="Open actions"
+                :flip-guard="150"
             />
         @endif
     </div>
