@@ -1,59 +1,63 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Well-Being Check-Ins
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A Laravel-based MVP for tracking daily well-being check-ins. Users log a score and optional note once per day, then review summaries and trends on a dashboard. The project includes a production-facing demo mode so hiring managers can explore the experience without registration.
 
-## About Laravel
+## Highlights
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Daily check-ins with a one-per-day rule and optional notes.
+- Dashboard summaries (last 7/30 days, current month) and trend insights.
+- Demo mode that auto-creates a temporary user and seeds sample data.
+- Standard authentication flows powered by Laravel Breeze.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tech Stack
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Backend: PHP 8.2+ with Laravel 12.
+- Database: MySQL 8.0 (primary target).
+- Frontend tooling: Vite, Tailwind CSS, Alpine.js.
 
-## Learning Laravel
+## Quickstart (Docker-based environment)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+The repository does not include Docker Compose files, so use the scripts below within your existing Docker setup (PHP-FPM + MySQL + Nginx + Node). If you already mount the repo into containers, run the commands in the PHP and Node containers as appropriate.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+composer install
+php -r "file_exists('.env') || copy('.env.example', '.env');"
+php artisan key:generate
+php artisan migrate
+npm install
+npm run build
+```
 
-## Laravel Sponsors
+For local development with hot reloading, run:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```bash
+npm run dev
+php artisan serve
+```
 
-### Premium Partners
+## Demo Mode (Production-Visible)
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Demo routes are intentionally enabled so the system can be viewed without registration. Use the demo start endpoint to create a temporary user and seed sample check-ins.
 
-## Contributing
+- Start demo: `GET /demo/start`
+- Reset demo data: `POST /demo/reset`
+- End demo: `POST /demo/end`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+A purge command exists to remove demo users older than a configurable threshold.
 
-## Code of Conduct
+```bash
+php artisan demo:purge --hours=12
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Documentation
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- [Project overview](docs/overview.md)
+- [Architecture](docs/architecture.md)
+- [Local setup](docs/how-to-local-setup.md)
+- [Common tasks](docs/how-to-common-tasks.md)
+- [Troubleshooting](docs/troubleshooting.md)
+- [Architectural decisions](docs/decisions)
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+MIT
